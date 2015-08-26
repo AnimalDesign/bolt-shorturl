@@ -27,8 +27,8 @@ class Extension extends BaseExtension
             $this->app->before(function (Request $request) use ($config, $app) {
                 $requestedPath = trim($request->getPathInfo(), '/');
 
-                // Abort, if not a url shorturl
-                if (!preg_match('/'.$config['prefix'].'\/[a-zA-Z0-9\-_.]{2,'.$config['maxlength'].'}$/', $requestedPath)) {
+                // Abort, if not a shorturl
+                if (!preg_match('/'.($config['prefix'] ? $config['prefix'].'\/' : '').'[a-zA-Z0-9\-_.]{2,'.$config['maxlength'].'}$/', $requestedPath)) {
                     return;
                 }
 
@@ -39,7 +39,7 @@ class Extension extends BaseExtension
                         if ($field['type'] === 'shorturl') {
                             $contentTypeContent = $this->app['storage']->getContent($name, array());
                             foreach ($contentTypeContent as $content) {
-                                if (!empty($content[$field['type']]) && $requestedPath === $config['prefix'].'/'.$content[$field['type']]) {
+                                if (!empty($content[$field['type']]) && $requestedPath === ($config['prefix'] ? $config['prefix'].'/' : '').$content[$field['type']]) {
                                     return $this->app->redirect($request->getBaseUrl().$content->link(), 302);
                                 }
                             }
