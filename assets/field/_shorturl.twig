@@ -1,0 +1,8 @@
+<fieldset data-animal-field="shorturl">
+    <label class="col-sm-3 control-label">{{field.label|default(key)}}:</label>
+    <div class="col-sm-9">
+        <div class="input-group input-group-sm locked">
+            <input class="form-control" id="{{ key }}" name="{{ name }}" value="{{ context.content.get(key) }}" type="text">
+        </div>
+    </div>
+</fieldset>
