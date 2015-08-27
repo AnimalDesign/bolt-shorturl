@@ -37,11 +37,11 @@ class Extension extends BaseExtension
                 // Get all fields of type shorturl
                 $contentTypes = $this->app['config']->get('contenttypes');
                 foreach ($contentTypes as $name => $contentType) {
-                    foreach ($contentType['fields'] as $field) {
+                    foreach ($contentType['fields'] as $key => $field) {
                         if ($field['type'] === 'shorturl') {
                             $contentTypeContent = $this->app['storage']->getContent($name, array());
                             foreach ($contentTypeContent as $content) {
-                                if (!empty($content[$field['type']]) && $requestedPath === ($config['prefix'] ? $config['prefix'].'/' : '').$content[$field['type']]) {
+                                if (!empty($content[$key]) && $requestedPath === ($config['prefix'] ? $config['prefix'].'/' : '').$content[$key]) {
                                     return $this->app->redirect($request->getBaseUrl().$content->link(), 302);
                                 }
                             }
