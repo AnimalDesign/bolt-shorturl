@@ -11,10 +11,9 @@ $(function() {
 
 			if(el.data('checkunique')) {
 				setShorturlStatus('loading');
-
-				//Ajax call to verify if hash is unique.
 				$.get(el.data('async-url'), {
-						shorturl: el.val()
+						shorturl: el.val(),
+						recordId: el.data('record-id')
 					}, function(data) {
 						$('.shorturl-message-' + data.status).html(data.msg);
 						setShorturlStatus(data.status);
@@ -38,5 +37,11 @@ $(function() {
 	var setShorturlStatus = function(status) {
 		$('.shorturl-' + status).addClass('active').siblings().removeClass('active');
 		$('.shorturl-message-' + status).show().siblings('small').hide();
+
+		if(status == 'ok') {
+			$('.shorturl-hidden').val($('input.shorturl').val());
+		} else {
+			$('.shorturl-hidden').val('');
+		}
 	}
 });
