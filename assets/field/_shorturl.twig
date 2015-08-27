@@ -10,11 +10,11 @@
 				<i class="fa fa-check-circle shorturl-ok"></i>
                 <i class="fa fa-times-circle shorturl-error active"></i>
                 <i class="fa fa-cog fa-spin shorturl-loading"></i>
-				<input data-minlenght="2" maxlength="{{ config.maxlength }}" class="form-control shorturl" id="{{ key }}" name="{{ name }}" type="text" value="{{ context.content.get(key) }}">
+				<input{{ config.checkunique == true ? ' data-checkunique="true"': '' }} data-base-url="{{ paths.hosturl }}{{ app.request.baseUrl }}/{{ config.prefix is not empty ? config.prefix ~ '/' : '' }}" data-minlenght="2" data-async-url="{{ paths.bolt }}shorturl/check" maxlength="{{ config.maxlength }}" class="form-control shorturl" id="{{ key }}" name="{{ name }}" type="text" value="{{ context.content.get(key) }}">
 			</div>
 		</div>
         <small class="shorturl-message-error"></small>
-        <small class="shorturl-message-ok">This record will be accessible via <a data-base="{{ paths.hosturl }}{{ app.request.baseUrl }}/{{ config.prefix is not empty ? config.prefix ~ '/' : '' }}" href="" traget="_blank"></a></small>
+        <small class="shorturl-message-ok"></small>
 	</div>
 </fieldset>
 <div class="col-xs-6"></div>

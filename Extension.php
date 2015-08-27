@@ -21,6 +21,8 @@ class Extension extends BaseExtension
 
     public function initialize()
     {
+        $this->app->mount('upstairs/shorturl', new Controller\AsyncController($this->app, $this->config));
+
         $this->addCss('assets/css/field_shorturl.css');
         $this->addJavascript('assets/js/field_shorturl.js', true);
 
@@ -61,7 +63,8 @@ class Extension extends BaseExtension
     {
         return array(
             'maxlength' => 10,
-            'prefix' => 's'
+            'prefix' => 's',
+            'checkunique' => true,
         );
     }
 
