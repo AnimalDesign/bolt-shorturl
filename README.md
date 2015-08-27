@@ -26,6 +26,7 @@ You're done.
 
 - `maxlength` (default: 10): Defines the maximal length of the shorturl hash.
 - `prefix` (default: 's'): Defines the default prefix for shorturl routes (i.e. http://yourhost/**s**/short). If none is given, none is used (http://yourhost/short).
+- `checkunique` (default: true): Checks, if the given shorturl already exists.
 
 ## About
 
