@@ -1,0 +1,36 @@
+.right-inner-addon {
+    position: relative;
+	overflow:hidden
+}
+.right-inner-addon input {
+    padding-right: 30px;
+}
+.right-inner-addon i.fa {
+    position: absolute;
+	display:none;
+    right: 0;
+    padding: 10px 12px;
+    pointer-events: none;
+	z-index: 10;
+}
+
+.right-inner-addon i.fa.active {
+	display:block;
+}
+
+.shorturl-ok {
+	color: #7FA800;
+}
+
+.shorturl-error {
+	color: #CA2300;
+}
+
+.shorturl-message-error,
+.shorturl-message-ok {
+	display:none;
+}
+
+#editcontent .shorturl-message-error {
+	color: #CA2300;
+}

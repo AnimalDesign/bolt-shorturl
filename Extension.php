@@ -21,8 +21,10 @@ class Extension extends BaseExtension
 
     public function initialize()
     {
-        $config = $this->config;
+        $this->addCss('assets/css/field_shorturl.css');
+        $this->addJavascript('assets/js/field_shorturl.js', true);
 
+        $config = $this->config;
         if ($this->app['config']->getWhichEnd() == 'frontend') {
             $this->app->before(function (Request $request) use ($config, $app) {
                 $requestedPath = trim($request->getPathInfo(), '/');
