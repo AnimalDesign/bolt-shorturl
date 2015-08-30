@@ -9,24 +9,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Extension extends BaseExtension
 {
-    public function __construct(Application $app)
+    public function initialize()
     {
-        parent::__construct($app);
+        $config = $this->config;
+
+        $this->app->mount($this->app['config']->get('general/branding/path').'/async/shorturl', new Controller\AsyncController($this->app, $this->config));
+
         $this->app['config']->getFields()->addField(new Field\ShorturlField());
         if ($this->app['config']->getWhichEnd() == 'backend') {
             $this->app['htmlsnippets'] = true;
             $this->app['twig.loader.filesystem']->prependPath(__DIR__.'/assets');
+
+            $this->addCss('assets/css/field_shorturl.css');
+            $this->addJavascript('assets/js/field_shorturl.js', true);
         }
-    }
 
-    public function initialize()
-    {
-        $this->app->mount('upstairs/shorturl', new Controller\AsyncController($this->app, $this->config));
-
-        $this->addCss('assets/css/field_shorturl.css');
-        $this->addJavascript('assets/js/field_shorturl.js', true);
-
-        $config = $this->config;
         if ($this->app['config']->getWhichEnd() == 'frontend') {
             $this->app->before(function (Request $request) use ($config, $app) {
                 $requestedPath = trim($request->getPathInfo(), '/');

@@ -10,7 +10,7 @@
 				<i class="fa fa-check-circle shorturl-ok"></i>
                 <i class="fa fa-times-circle shorturl-error active"></i>
                 <i class="fa fa-cog fa-spin shorturl-loading"></i>
-				<input{{ config.checkunique == true ? ' data-checkunique="true"': '' }} data-base-url="{{ paths.hosturl }}{{ app.request.baseUrl }}/{{ config.prefix is not empty ? config.prefix ~ '/' : '' }}" data-minlenght="2" data-async-url="{{ paths.bolt }}shorturl/check" data-record-id="{{ context.content.id }}" maxlength="{{ config.maxlength }}" class="form-control shorturl" type="text" value="{{ context.content.get(key) }}">
+				<input{{ config.checkunique == true ? ' data-checkunique="true"': '' }} data-base-url="{{ paths.hosturl }}{{ app.request.baseUrl }}/{{ config.prefix is not empty ? config.prefix ~ '/' : '' }}" data-minlenght="2" data-async-url="{{ paths.bolt }}async/shorturl/check" data-record-id="{{ context.content.id }}" maxlength="{{ config.maxlength }}" class="form-control shorturl" type="text" value="{{ context.content.get(key) }}">
 				<input type="hidden" id="{{ key }}" name="{{ name }}" value="{{ context.content.get(key) }}" class="shorturl-hidden">
 			</div>
 		</div>
