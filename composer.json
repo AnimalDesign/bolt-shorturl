@@ -20,5 +20,8 @@
 		"psr-4": {
 			"Bolt\\Extension\\Animal\\Shorturl\\": ["", "src/"]
 		}
+	},
+	"extra": {
+		"bolt-assets": "assets"
 	}
 }
