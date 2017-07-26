@@ -2,7 +2,7 @@
 
 This plugin provides a new 'shorturl' fieldtype for contenttypes and redirects accordingly. When set up, it redirects i.e. from `http://yourhost/s/short` to `http://yourhost/page/this-is-my-long-slug`.
 
-It runs before the internal routing and therefor overwrites all other routes.
+It runs before the internal routing and therefore overwrites all other routes.
 
 ## Setup
 
